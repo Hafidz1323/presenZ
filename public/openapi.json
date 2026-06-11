@@ -1,0 +1,238 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "presenZ API Documentation",
+    "description": "Dokumentasi API untuk Sistem Manajemen Presensi Karyawan presenZ (presenz falco). Mendukung autentikasi Sanctum, JWT, API Key, dan Basic Auth.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/api/v1",
+      "description": "Server API Lokal"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "summary": "Login via Sanctum",
+        "description": "Autentikasi menggunakan email dan password untuk mendapatkan token Sanctum (Personal Access Token).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": { "type": "string", "example": "admin@presenz.com" },
+                  "password": { "type": "string", "example": "admin123" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login berhasil, mengembalikan token Sanctum",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "access_token": { "type": "string" },
+                    "token_type": { "type": "string", "example": "Bearer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/jwt/login": {
+      "post": {
+        "summary": "Login via JWT",
+        "description": "Autentikasi menggunakan email dan password untuk mendapatkan Stateless JSON Web Token (JWT).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": { "type": "string", "example": "admin@presenz.com" },
+                  "password": { "type": "string", "example": "admin123" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login berhasil, mengembalikan token JWT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "access_token": { "type": "string" },
+                    "token_type": { "type": "string", "example": "Bearer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "summary": "Ambil Profil User (Sanctum)",
+        "description": "Mendapatkan data profil user yang sedang login menggunakan otorisasi Sanctum Bearer Token.",
+        "security": [
+          { "SanctumAuth": [] }
+        ],
+        "responses": {
+          "200": { "description": "Berhasil mengambil profil" },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    },
+    "/jwt/profile": {
+      "get": {
+        "summary": "Ambil Profil User (JWT)",
+        "description": "Mendapatkan data profil user yang sedang login menggunakan otorisasi Stateless JWT Bearer Token.",
+        "security": [
+          { "JWTAuth": [] }
+        ],
+        "responses": {
+          "200": { "description": "Berhasil mengambil profil via JWT" },
+          "401": { "description": "Unauthorized: Token invalid/expired" }
+        }
+      }
+    },
+    "/apikey/profile": {
+      "get": {
+        "summary": "Ambil Profil User (API Key)",
+        "description": "Mendapatkan data profil user yang sedang login menggunakan header X-API-KEY.",
+        "security": [
+          { "ApiKeyAuth": [] }
+        ],
+        "responses": {
+          "200": { "description": "Berhasil mengambil profil via API Key" },
+          "401": { "description": "Unauthorized: API Key missing or invalid" }
+        }
+      }
+    },
+    "/basic/profile": {
+      "get": {
+        "summary": "Ambil Profil User (Basic Auth)",
+        "description": "Mendapatkan data profil user yang sedang login menggunakan Basic HTTP Auth (Base64 email:password).",
+        "security": [
+          { "BasicAuth": [] }
+        ],
+        "responses": {
+          "200": { "description": "Berhasil mengambil profil via Basic Auth" },
+          "401": { "description": "Unauthorized: Basic credentials invalid" }
+        }
+      }
+    },
+    "/weather": {
+      "get": {
+        "summary": "Konsumsi API Cuaca Eksternal (Open-Meteo)",
+        "description": "Mengambil data cuaca terkini secara real-time dari API eksternal Open-Meteo berdasarkan parameter latitude dan longitude.",
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "number", "example": -6.2088 }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "number", "example": 106.8456 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data cuaca berhasil diambil dari Open-Meteo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "source": { "type": "string" },
+                    "current_weather": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/attendance/check-in": {
+      "post": {
+        "summary": "Melakukan Check-In Presensi",
+        "description": "Mencatat kehadiran masuk karyawan dengan mengirimkan shift_id, koordinat, dan foto bukti kehadiran.",
+        "security": [
+          { "SanctumAuth": [] }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": ["shift_id", "latitude", "longitude", "photo"],
+                "properties": {
+                  "shift_id": { "type": "integer", "example": 1 },
+                  "latitude": { "type": "number", "example": -6.2088 },
+                  "longitude": { "type": "number", "example": 106.8456 },
+                  "photo": { "type": "string", "format": "binary" },
+                  "device": { "type": "string", "example": "Mobile App" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Check-in berhasil" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "SanctumAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Sanctum Token",
+        "description": "Masukkan Token Sanctum Anda"
+      },
+      "JWTAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Masukkan JWT Bearer Token Anda (didapat dari endpoint /auth/jwt/login)"
+      },
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-KEY",
+        "description": "Masukkan API Key Anda (Contoh: pk_xxx...)"
+      },
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic",
+        "description": "Autentikasi HTTP Basic menggunakan Email dan Password"
+      }
+    }
+  }
+}

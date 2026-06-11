@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .bg-dashboard-gradient {
+        background: linear-gradient(180deg, #1864ab 0%, #00b4d8 45%, #e3fafc 100%) !important;
+        background-attachment: fixed !important;
+    }
+}
+
+/* Iceberg White Theme Mappings */
+.bg-dashboard-gradient .bg-white,
+.bg-dashboard-gradient .bg-slate-50 {
+    background-color: rgba(240, 248, 255, 0.82) !important; /* Iceberg white with transparency */
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Ensure dropdown menu items and lists are opaque enough for readability */
+.bg-dashboard-gradient .absolute.z-50.bg-white,
+.bg-dashboard-gradient [role="menu"] {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: none !important;
+}
+
+/* Nav bar background glassmorphism */
+.bg-dashboard-gradient nav {
+    background-color: rgba(240, 248, 255, 0.7) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Page header slot wrapper (to ensure gradient goes all the way up) */
+.bg-dashboard-gradient header:not(.sticky):not(.h-16) {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Sticky topbar in AdminLayout needs to remain sticky with glassmorphism */
+.bg-dashboard-gradient header.sticky,
+.bg-dashboard-gradient header.h-16 {
+    background-color: rgba(240, 248, 255, 0.7) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Header text color adjustments for dark top background */
+.bg-dashboard-gradient header:not(.sticky):not(.h-16) h2,
+.bg-dashboard-gradient header:not(.sticky):not(.h-16) h1,
+.bg-dashboard-gradient header:not(.sticky):not(.h-16) .text-slate-900,
+.bg-dashboard-gradient header:not(.sticky):not(.h-16) .text-slate-800 {
+    color: #ffffff !important;
+}
+
+.bg-dashboard-gradient header:not(.sticky):not(.h-16) p,
+.bg-dashboard-gradient header:not(.sticky):not(.h-16) .text-slate-500,
+.bg-dashboard-gradient header:not(.sticky):not(.h-16) .text-slate-400 {
+    color: #e0f2fe !important;
+}

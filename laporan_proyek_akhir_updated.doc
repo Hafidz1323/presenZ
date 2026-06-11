@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta charset="utf-8">
+    <title>Laporan Proyek Akhir</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>100</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #333333;
+            margin: 1in;
+        }
+        h1 {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #1a365d;
+            border-bottom: 2px solid #1864ab;
+            padding-bottom: 5px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        h2 {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #2b6cb0;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+        h3 {
+            font-size: 13pt;
+            font-weight: bold;
+            color: #4a5568;
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+        p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        pre {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            font-family: 'Consolas', monospace;
+            font-size: 9.5pt;
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+        }
+        code {
+            font-family: 'Consolas', monospace;
+            background-color: #f7fafc;
+            padding: 2px 4px;
+            font-size: 9.5pt;
+            border: 1px solid #e2e8f0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        th {
+            background-color: #1864ab;
+            color: #ffffff;
+            font-weight: bold;
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #dee2e6;
+        }
+        .cover {
+            text-align: center;
+            margin-top: 2in;
+            margin-bottom: 2in;
+        }
+    </style>
+</head>
+<body>
+    <h1>LAPORAN PROYEK AKHIR</h1>
+<h2>SISTEM INFORMASI MANAJEMEN PRESENSI KARYAWAN &amp; HRIS (presenZ Falco)</h2>
+<hr />
+<h3>1. COVER PROYEK AKHIR</h3>
+<ul>
+<li><strong>Judul Aplikasi</strong>: <code>presenZ Falco</code> (Sistem Informasi Manajemen Presensi Karyawan &amp; HRIS Berbasis Geolocation &amp; WebRTC)</li>
+<li><strong>Logo Aplikasi</strong>:
+  <code>=================================================
+   ||  PPPP   RRRR   EEEE   SSSSS  EEEEE  N   N  ZZZZZ  ||
+   ||  P   P  R   R  E      S      E      NN  N     Z   ||
+   ||  PPPP   RRRR   EEEE   SSSSS  EEEE   N N N    Z    ||
+   ||  P      R R    E          S  E      N  NN   Z     ||
+   ||  P      R  R   EEEEE  SSSSS  EEEEE  N   N  ZZZZZ  ||
+   ||                                                 ||
+   ||                  -- FALCO --                    ||
+   =================================================</code></li>
+<li><strong>Nama Mahasiswa</strong>: <code>[Nama Mahasiswa]</code></li>
+<li><strong>NIM</strong>: <code>[NIM Mahasiswa]</code></li>
+<li><strong>Program Studi</strong>: <code>[Program Studi]</code></li>
+<li><strong>Semester &amp; Tahun Akademik</strong>: Semester Genap / Tahun Akademik 2025/2026</li>
+<li><strong>Nama Dosen Pengampu</strong>: <code>[Nama Dosen Pengampu]</code></li>
+<li><strong>Tanggal Pengumpulan</strong>: 7 Juni 2026</li>
+</ul>
+<hr />
+<h3>2. LATAR BELAKANG APLIKASI DIBUAT</h3>
+<h4>A. Permasalahan &amp; Kebutuhan</h4>
+<p>Dalam pengelolaan sumber daya manusia (SDM) pada instansi modern, kedisiplinan waktu kehadiran karyawan adalah faktor penting penentu produktivitas. Beberapa masalah utama dalam sistem presensi konvensional (manual atau sidik jari fisik) meliputi:
+1. <strong>Keterbatasan Lokasi Fisik</strong>: Absensi fisik menghambat pemantauan karyawan yang ditugaskan di luar kantor (dinas lapangan) atau bekerja dari rumah (WFH).
+2. <strong>Kecurangan (Buddy Punching)</strong>: Sistem absensi berbasis web konvensional seringkali mudah dimanipulasi dengan cara memalsukan data lokasi atau koordinat GPS palsu.
+3. <strong>Ketidakpraktisan Rekapitulasi</strong>: Proses rekap kehadiran bulanan, perhitungan cuti, dan keterlambatan memakan waktu lama jika dilakukan secara manual.
+4. <strong>Ketiadaan Alamat Rinci</strong>: Data koordinat GPS mentah (latitude &amp; longitude) sulit dipahami HRD secara instan tanpa bantuan konversi alamat fisik (<em>reverse geocoding</em>).</p>
+<h4>B. Tujuan Aplikasi</h4>
+<p>Aplikasi <code>presenZ Falco</code> dirancang dengan tujuan:
+* Menyediakan media absensi masuk dan keluar karyawan secara <em>real-time</em> berbasis browser menggunakan koordinat GPS (<em>Geolocation</em>) dan verifikasi foto wajah (<em>WebRTC Camera</em>).
+* Mengotomatisasi konversi koordinat GPS menjadi alamat lengkap (Jalan, Kelurahan, Kecamatan, Kota, Provinsi, Negara) menggunakan API OpenStreetMap Nominatim.
+* Memfasilitasi manajemen pengajuan dan persetujuan cuti/izin karyawan secara digital dan instan.
+* Memudahkan HRD dalam memantau statistik kehadiran harian, data karyawan, shift kerja, posisi, dan departemen melalui dasbor yang komprehensif.</p>
+<h4>C. Sasaran Pengguna</h4>
+<ul>
+<li><strong>Karyawan</strong>: Melakukan absensi harian, melihat riwayat absensi pribadi, dan mengajukan cuti/izin kerja.</li>
+<li><strong>Admin / HRD</strong>: Mengelola master data (karyawan, shift kerja, departemen, jabatan), memantau log kehadiran real-time seluruh karyawan, dan memberikan keputusan persetujuan (<em>approval</em>) terhadap cuti/izin yang diajukan.</li>
+</ul>
+<hr />
+<h3>3. FITUR-FITUR APLIKASI</h3>
+<h4>A. Fitur Autentikasi dan Otorisasi (Multi-Auth &amp; API Protection)</h4>
+<ol>
+<li><strong>Multi-Role Otorisasi</strong>: Otorisasi pengguna dibagi menjadi dua peran, yaitu <code>admin</code> (HRD/Management) dan <code>karyawan</code> (Staff biasa), menggunakan pemisahan rute (<em>route protection</em>) berbasis Laravel Breeze/Inertia.</li>
+<li><strong>Laravel Sanctum Authentication</strong>: Pengamanan rute API standar menggunakan Token Personal Access (<code>auth:sanctum</code>) untuk transfer data asinkron.</li>
+<li><strong>Custom JWT Authentication</strong>: Token khusus kustom yang dibangun secara mandiri via kelas <code>JwtService</code> menggunakan enkripsi HMAC-SHA256 untuk memproteksi endpoint <code>/api/v1/jwt/profile</code> di bawah middleware <code>jwt.auth</code>.</li>
+<li><strong>API Key Authentication</strong>: Sistem otentikasi melalui header custom <code>X-API-KEY</code> yang diverifikasi secara dinamis oleh middleware <code>api.key</code> pada rute <code>/api/v1/apikey/profile</code>.</li>
+<li><strong>Basic HTTP Authentication</strong>: Otentikasi bawaan browser menggunakan format Base64 melalui middleware <code>auth.basic</code> pada rute <code>/api/v1/basic/profile</code>.</li>
+</ol>
+<h4>B. Fitur CRUD untuk Entitas Utama</h4>
+<p>Aplikasi ini menyediakan panel administrasi penuh (CRUD) bagi pengguna berotoritas <code>admin</code>:
+* <strong>Departemen</strong>: Menambahkan, melihat, mengubah, dan menghapus divisi kerja karyawan (misal: IT, HRD, Finance).
+* <strong>Jabatan (Position)</strong>: Pengelolaan nama jabatan struktural karyawan beserta kodenya.
+* <strong>Shift Kerja</strong>: Pengaturan jam mulai kerja (<em>check-in</em>) dan jam selesai kerja (<em>check-out</em>) harian.
+* <strong>Data Karyawan (User)</strong>: Manajemen data akun staff (NIP, Nama, Email, Nomor Telepon, Alamat Rumah, Departemen, Jabatan, dan status aktifasi akun).
+* <strong>Pengajuan Cuti (Leave)</strong>: Karyawan dapat membuat (C), membaca (R) pengajuan cuti pribadinya. Sementara Admin/HR memiliki wewenang membaca (R) pengajuan cuti masuk dan mengubah status persetujuan (U) menjadi disetujui (<em>Approved</em>) atau ditolak (<em>Rejected</em>) disertai alasan penolakan.</p>
+<h4>C. Fitur Khusus Lainnya</h4>
+<ol>
+<li><strong>WebRTC Face Capture</strong>: Integrasi kamera perangkat secara langsung untuk mengambil gambar swafoto (<em>selfie</em>) karyawan saat melakukan presensi masuk/keluar.</li>
+<li><strong>Live Location Geocoding</strong>: Dashboard secara real-time menangkap koordinat GPS pengguna dan menerjemahkannya ke nama jalan, kelurahan, kecamatan, kota, provinsi, dan negara secara dinamis menggunakan API reverse geocoding eksternal (Nominatim OpenStreetMap) yang dikoneksikan secara backend dengan perbaikan bypass SSL cURL pada localhost.</li>
+<li><strong>Weather Forecast API</strong>: Aplikasi mengonsumsi data cuaca terkini dari API publik Open-Meteo di tingkat backend untuk menyajikan visualisasi cuaca setempat saat absensi dicatat.</li>
+<li><strong>Premium Toast System</strong>: Notifikasi native bawaan web browser (<code>window.alert</code>) diganti secara menyeluruh dengan notifikasi pop-up dinamis bergaya <em>glassmorphism</em> di sudut kanan bawah.</li>
+<li><strong>Iceberg White &amp; Gradient Theme (Premium UI)</strong>: Tampilan visual dashboard pasca-login didesain dengan skema warna gradasi biru laut/kristal (<em>iceberg theme</em>) dan elemen kartu transparan (frosted glass) demi estetika modern kelas premium.</li>
+</ol>
+<hr />
+<h3>4. ENTITY RELATIONSHIP DIAGRAM (ERD)</h3>
+<h4>A. Diagram Relasi Antar Tabel (Mermaid Diagram)</h4>
+<pre><code class="language-mermaid">erDiagram
+    DEPARTMENTS ||--o{ USERS : &quot;has many&quot;
+    POSITIONS ||--o{ USERS : &quot;has many&quot;
+    USERS }|--|{ SHIFTS : &quot;belongs to many (user_shift)&quot;
+    USERS ||--o{ ATTENDANCES : &quot;records&quot;
+    USERS ||--o{ LEAVES : &quot;applies&quot;
+    SHIFTS ||--o{ ATTENDANCES : &quot;applies to&quot;
+    ATTENDANCES ||--o{ ATTENDANCE_LOGS : &quot;logs actions&quot;
+
+    DEPARTMENTS {
+        bigint id PK
+        string name
+        string code
+        string description
+        timestamps created_at
+    }
+
+    POSITIONS {
+        bigint id PK
+        string name
+        string code
+        string description
+        timestamps created_at
+    }
+
+    USERS {
+        bigint id PK
+        string name
+        string email
+        string password
+        string role
+        string nip
+        string api_key
+        string photo
+        bigint department_id FK
+        bigint position_id FK
+        string phone
+        string address
+        boolean is_active
+        timestamps created_at
+    }
+
+    SHIFTS {
+        bigint id PK
+        string name
+        time check_in_time
+        time check_out_time
+        timestamps created_at
+    }
+
+    ATTENDANCES {
+        bigint id PK
+        bigint user_id FK
+        bigint shift_id FK
+        datetime check_in_time
+        string check_in_photo
+        decimal check_in_lat
+        decimal check_in_long
+        string check_in_address
+        string check_in_ip
+        string check_in_device
+        datetime check_out_time
+        string check_out_photo
+        decimal check_out_lat
+        decimal check_out_long
+        string check_out_address
+        string check_out_ip
+        string check_out_device
+        string status
+        timestamps created_at
+    }
+
+    LEAVES {
+        bigint id PK
+        bigint user_id FK
+        string type
+        date start_date
+        date end_date
+        text reason
+        string status
+        bigint approved_by FK
+        datetime approved_at
+        text rejection_reason
+        string attachment
+        timestamps created_at
+    }
+
+    ATTENDANCE_LOGS {
+        bigint id PK
+        bigint attendance_id FK
+        string action
+        text description
+        timestamps created_at
+    }
+</code></pre>
+<h4>B. Deskripsi Singkat Entitas</h4>
+<ol>
+<li><strong>departments (Departemen)</strong>: Menyimpan data kelompok divisi kerja. Berelasi <em>One-to-Many</em> ke tabel <code>users</code>.</li>
+<li><strong>positions (Jabatan)</strong>: Menyimpan tingkat jabatan structural karyawan. Berelasi <em>One-to-Many</em> ke tabel <code>users</code>.</li>
+<li><strong>users (Pengguna)</strong>: Menyimpan informasi profil utama akun karyawan dan admin. Menyimpan data relasi <code>department_id</code> dan <code>position_id</code>. Berelasi <em>Many-to-Many</em> ke <code>shifts</code> melalui tabel pivot <code>user_shift</code>.</li>
+<li><strong>shifts (Jadwal)</strong>: Berisi parameter jadwal waktu kerja yang berlaku. Berelasi ke tabel <code>users</code> (N:M) dan <code>attendances</code> (1:N).</li>
+<li><strong>attendances (Absensi)</strong>: Menyimpan rekam jejak presensi masuk dan keluar. Berisi detail koordinat, IP, jenis perangkat, foto swafoto, serta alamat terjemahan fisik. Berelasi <em>One-to-Many</em> ke tabel <code>attendance_logs</code>.</li>
+<li><strong>leaves (Cuti)</strong>: Menyimpan permohonan izin cuti karyawan lengkap dengan durasi tanggal, jenis cuti, lampiran berkas penunjang, dan data admin yang menyetujui.</li>
+<li><strong>attendance_logs (Log Absen)</strong>: Menyimpan jejak aktivitas transaksi log absensi (misal: "karyawan telah melakukan check_in jam 08.00").</li>
+</ol>
+<hr />
+<h3>5. USER INTERFACE (UI)</h3>
+<h4>A. Tangkapan Layar Halaman &amp; Visualisasi Komponen</h4>
+<ol>
+<li>
+<p><strong>Dashboard Kamera &amp; Konfirmasi Kehadiran</strong>
+   Dasbor absensi yang memuat panel kamera WebRTC untuk capture foto wajah secara live, serta visualisasi indikator verifikasi sinyal GPS perangkat pengguna.
+   <img alt="Kamera Live &amp; GPS Status" src="C:\Users\LENOVO.gemini\antigravity-ide\brain\8de68069-c8f1-466d-ade2-bf61ccf2b66c\media__1780839581888.png" /></p>
+</li>
+<li>
+<p><strong>Detektor Koordinat Lokasi Presisi</strong>
+   Komponen pembaca koordinat latitude &amp; longitude secara dinamis dari sensor Geolocation perangkat browser.
+   <img alt="Detektor Koordinat GPS" src="C:\Users\LENOVO.gemini\antigravity-ide\brain\8de68069-c8f1-466d-ade2-bf61ccf2b66c\media__1780838201288.png" /></p>
+</li>
+<li>
+<p><strong>Panel Penerjemah Alamat (Reverse Geocode)</strong>
+   Panel yang memperlihatkan konversi koordinat mentah menjadi data alamat fisik (Jalan, Kelurahan, Kecamatan, Kota, Provinsi, Negara) setelah sistem berhasil memanggil API eksternal OpenStreetMap.
+   <img alt="Detail Lokasi Fisik Terisi" src="C:\Users\LENOVO.gemini\antigravity-ide\brain\8de68069-c8f1-466d-ade2-bf61ccf2b66c\media__1780838401530.png" /></p>
+</li>
+<li>
+<p><strong>Widget Jam &amp; Ringkasan Absensi Premium (Tosca &amp; Blue Theme)</strong>
+   Tampilan widget penunjuk waktu digital real-time bermodel gradasi hijau toska yang kontras di atas latar belakang gradasi biru es (<em>iceberg</em>) yang elegan dan sejuk.
+   <img alt="Konsep Desain Warna" src="C:\Users\LENOVO.gemini\antigravity-ide\brain\8de68069-c8f1-466d-ade2-bf61ccf2b66c\media__1780838927472.png" />
+   <img alt="Widget Tosca Jam" src="C:\Users\LENOVO.gemini\antigravity-ide\brain\8de68069-c8f1-466d-ade2-bf61ccf2b66c\media__1780839059718.png" /></p>
+</li>
+<li>
+<p><strong>Transformasi Notifikasi Native Ke Toast Premium</strong>
+   Gambar di bawah menunjukkan notifikasi native lama berbentuk dialog pop-up browser (<code>window.alert</code>) yang saat ini telah diganti total dengan notifikasi melayang (toast notification) internal yang beranimasi halus dan modern.
+   <img alt="Notifikasi Browser Lama" src="C:\Users\LENOVO.gemini\antigravity-ide\brain\8de68069-c8f1-466d-ade2-bf61ccf2b66c\media__1780837529518.png" /></p>
+</li>
+</ol>
+<h4>B. Alur Navigasi &amp; Fungsionalitas</h4>
+<ul>
+<li><strong>Login</strong>: Pengguna diarahkan ke halaman login. Sistem secara otomatis membaca <em>role</em> akun. Jika merupakan <code>admin</code>, pengguna akan dialihkan ke rute admin (<code>/admin/dashboard</code>). Jika merupakan <code>karyawan</code>, dialihkan ke dasbor kehadiran (<code>/dashboard</code>).</li>
+<li><strong>Sidebar Admin</strong>: Admin dapat berpindah halaman secara dinamis (tanpa reload berkat Inertia) untuk mengakses modul Kelola Karyawan, Kelola Master Data (Departemen, Jabatan, Shift), Laporan Rekapitulasi Absensi Semua Staff, serta Halaman Approval Pengajuan Cuti.</li>
+<li><strong>Top Navbar Karyawan</strong>: Karyawan dapat menavigasi dasbor presensi, membuka halaman Riwayat Absensi Pribadi untuk meninjau status kehadiran harian, atau masuk ke modul Pengajuan Cuti untuk mengajukan permohonan libur baru dengan mengunggah lampiran surat.</li>
+</ul>
+<hr />
+<h3>6. TESTING API MENGGUNAKAN POSTMAN</h3>
+<p>Postman Collection terlampir pada root proyek bernama <a href="file:///c:/laragon/www/presenZ/PresenZ_API_Collection.json">PresenZ_API_Collection.json</a>. Berikut adalah rangkuman endpoint dan alur uji otentikasi/fitur API:</p>
+<h4>A. Otentikasi JWT (JSON Web Token)</h4>
+<ul>
+<li><strong>Endpoint</strong>: <code>/api/v1/auth/jwt/login</code></li>
+<li><strong>Metode</strong>: <code>POST</code></li>
+<li><strong>Request Body (JSON)</strong>:
+  <code>json
+  {
+      "email": "karyawan1@presenz.com",
+      "password": "password"
+  }</code></li>
+<li><strong>Response Body (200 OK)</strong>:
+  <code>json
+  {
+      "message": "JWT Login success",
+      "data": {
+          "id": 3,
+          "name": "Karyawan 1",
+          "email": "karyawan1@presenz.com",
+          "email_verified_at": "2026-05-18T16:42:58.000000Z",
+          "role": "karyawan",
+          "nip": "EMP001",
+          "photo": null,
+          "created_at": "2026-05-18T16:42:58.000000Z",
+          "updated_at": "2026-06-07T12:57:15.000000Z",
+          "department_id": 1,
+          "position_id": 2,
+          "phone": null,
+          "address": null,
+          "is_active": 1,
+          "deleted_at": null,
+          "photo_url": null
+      },
+      "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "token_type": "Bearer"
+  }</code></li>
+<li><strong>Uji Proteksi Profile via JWT Bearer</strong>:</li>
+<li><strong>Endpoint</strong>: <code>GET /api/v1/jwt/profile</code></li>
+<li><strong>Header</strong>: <code>Authorization: Bearer &lt;access_token&gt;</code></li>
+<li><strong>Response (200 OK)</strong>: Mengembalikan informasi profil lengkap data user terautentikasi (meliputi relasi departemen, jabatan, dan jadwal shift kerja).</li>
+</ul>
+<h4>B. Otentikasi API Key</h4>
+<ul>
+<li><strong>Endpoint</strong>: <code>GET /api/v1/apikey/profile</code></li>
+<li><strong>Header Proteksi</strong>: <code>X-API-KEY: pk_u42uIOwZ9Be9I0R4Ae46bSSJ6R461T4uYHv1zYez</code> <em>(API Key dinamis yang tersimpan di kolom api_key tabel users)</em></li>
+<li><strong>Response (200 OK)</strong>:
+  <code>json
+  {
+      "data": {
+          "id": 3,
+          "name": "Karyawan 1",
+          "email": "karyawan1@presenz.com",
+          "email_verified_at": "2026-05-18T16:42:58.000000Z",
+          "role": "karyawan",
+          "nip": "EMP001",
+          "photo": null,
+          "created_at": "2026-05-18T16:42:58.000000Z",
+          "updated_at": "2026-06-07T12:57:15.000000Z",
+          "department_id": 1,
+          "position_id": 2,
+          "phone": null,
+          "address": null,
+          "is_active": 1,
+          "deleted_at": null,
+          "photo_url": null,
+          "department": {
+              "id": 1,
+              "name": "Information Technology",
+              "code": "IT",
+              "description": null,
+              "created_at": "2026-05-18T16:42:56.000000Z",
+              "updated_at": "2026-05-18T16:42:56.000000Z",
+              "deleted_at": null
+          },
+          "position": {
+              "id": 2,
+              "name": "Staff",
+              "code": "STF",
+              "description": null,
+              "created_at": "2026-05-18T16:42:56.000000Z",
+              "updated_at": "2026-05-18T16:42:56.000000Z",
+              "deleted_at": null
+          },
+          "shifts": [
+              {
+                  "id": 1,
+                  "name": "Shift Pagi",
+                  "start_time": "08:00:00",
+                  "end_time": "17:00:00",
+                  "created_at": "2026-05-18T16:42:56.000000Z",
+                  "updated_at": "2026-05-18T16:42:56.000000Z",
+                  "deleted_at": null,
+                  "pivot": {
+                      "user_id": 3,
+                      "shift_id": 1,
+                      "created_at": "2026-05-18T16:42:58.000000Z",
+                      "updated_at": "2026-05-18T16:42:58.000000Z"
+                  }
+              }
+          ]
+      }
+  }</code></li>
+</ul>
+<h4>C. Otentikasi HTTP Basic Auth</h4>
+<ul>
+<li><strong>Endpoint</strong>: <code>GET /api/v1/basic/profile</code></li>
+<li><strong>Header Proteksi</strong>: <code>Authorization: Basic a2FyeWF3YW4xQHByZXNlbnouY29tOnBhc3N3b3Jk</code> <em>(Hasil encoding Base64 dari string "karyawan1@presenz.com:password")</em></li>
+<li><strong>Response (200 OK)</strong>: Menampilkan profil pengguna setelah lolos verifikasi dekripsi Base64 di level filter middleware Laravel (Struktur data response sama dengan format data profil di atas).</li>
+</ul>
+<h4>D. Uji Consume External API (Weather Forecast)</h4>
+<ul>
+<li><strong>Endpoint</strong>: <code>GET /api/v1/weather</code></li>
+<li><strong>Parameters</strong>: <code>latitude=-7.2798&amp;longitude=112.7493</code></li>
+<li><strong>Response (200 OK)</strong>:
+  <code>json
+  {
+      "source": "Open-Meteo API",
+      "latitude": -7.2798,
+      "longitude": 112.7493,
+      "timezone": "Asia/Jakarta",
+      "current_weather": {
+          "temperature": 29.8,
+          "windspeed": 8.5,
+          "weathercode": 2
+      }
+  }</code></li>
+</ul>
+<h4>E. Endpoint Absensi (Check-In &amp; Check-Out)</h4>
+<ul>
+<li><strong>Check-In</strong>: <code>POST /api/v1/attendance/check-in</code></li>
+<li><strong>Body (Multipart Form-Data)</strong>:<ul>
+<li><code>shift_id</code>: 1</li>
+<li><code>latitude</code>: -7.2798</li>
+<li><code>longitude</code>: 112.7493</li>
+<li><code>photo</code>: (file image swafoto)</li>
+</ul>
+</li>
+<li><strong>Check-Out</strong>: <code>POST /api/v1/attendance/check-out</code></li>
+<li><strong>Body (Multipart Form-Data)</strong>:<ul>
+<li><code>latitude</code>: -7.2798</li>
+<li><code>longitude</code>: 112.7493</li>
+<li><code>photo</code>: (file image swafoto)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>7. LAMPIRAN</h3>
+<ul>
+<li><strong>Link GitHub Repository</strong>: <a href="https://github.com/mahasiswa/presenZ-Falco">https://github.com/mahasiswa/presenZ-Falco</a> <em>(Ubah dengan URL repositori resmi Anda)</em></li>
+<li><strong>Link Demo Aplikasi</strong>: <a href="http://presenz-falco.test">http://presenz-falco.test</a> <em>(Atau tautan hosting lokal Laragon Anda)</em></li>
+</ul>
+</body>
+</html>
